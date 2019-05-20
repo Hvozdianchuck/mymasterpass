@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:include="layout/base :: headerFragment">
+    <title id="pageTitle">Nazar</title>
+</head>
+<body  th:include="layout/base :: bodyFragment">
+
+<div id="pageContent">
+
+    <div class="successCont">
+
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 text-center orderHead">
+                Your pairing is successful! :)
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+
+        <div class="row detRow">
+            <div class="col-md-12 text-center">
+                Your long access token is <span class="text-bold" th:text="${longAccessToken}"></span>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

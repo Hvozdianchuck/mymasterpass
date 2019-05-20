@@ -1,0 +1,106 @@
+.head-title{
+    text-align: center;
+}
+
+.productCont{
+    margin-top: 5%;
+}
+
+.productName{
+    font-weight: bold;
+    font-size: 1.9rem;
+    border-bottom: 1px solid #AAA;
+    padding-bottom: 6px;
+}
+
+.productPrice{
+    margin-top: 10px;
+}
+
+.price{
+    color: red;
+    font-weight: bold;
+    font-size: 2.6rem;
+}
+
+.box{
+    display: inline-block;
+    width: 50px;
+    padding: 20px;
+    background: #EEE;
+    cursor: pointer;
+}
+
+.boxText{
+    width: inherit;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.optionName{
+    margin-bottom: 4px;
+    color: #666;
+}
+.option{
+    margin-top: 5%;
+}
+.gold{
+    background: #c9ba93;
+}
+.grey{
+    background: grey;
+}
+
+.black{
+    background: black;
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+#btnMasterpass{
+    cursor: pointer;
+}
+
+.orderHead{
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+
+.successCont{
+    margin-top: 4%;
+}
+
+.detRow{
+    margin-top: 1.5%;
+    font-size: 1.8rem;
+}
+
+.address{
+    border-left:1px solid #AAA;
+}
+
+.homeOptions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.homeSelect {
+    display: inline-block;
+    background: #EEE;
+    padding: 100px;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px;
+    cursor: pointer;
+    color:#000;
+}
+
+.homeSelect:hover{
+    background: #AAA;
+    text-decoration: none;
+}

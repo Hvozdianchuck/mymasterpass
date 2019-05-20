@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<body th:fragment="checkoutFragment" th:include="layout/base :: bodyFragment">
+    <div id="pageContent">
+        <div class="row productCont">
+            <div class="col-md-4 text-center">
+                <img src="/images/iphone.jpg" />
+            </div>
+            <div class="col-md-4">
+                <div class="productName">
+                    Apple iPhone 8, Fully Unlocked 4.7", 64 GB - Gold
+                </div>
+
+                <div class="productPrice">
+                    Price : <span class="price">$100</span>
+                </div>
+
+                <div class="option">
+                    <div class="optionName">
+                        Color
+                    </div>
+                    <div class="colorsList">
+                        <span class="box gold"></span>
+                        <span class="box grey"></span>
+                        <span class="box black"></span>
+                    </div>
+                </div>
+
+
+                <div class="option">
+                    <div class="optionName">
+                        Storage
+                    </div>
+                    <div class="colorsList">
+                        <span class="box boxText">128 GB</span>
+                        <span class="box boxText">256 GB</span>
+                    </div>
+                </div>
+
+                <div class="option">
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Carrier</th>
+                            <th>Compatibility Rating</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-bold">Singtel</td>
+                            <td>Fully Compatible</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Starhub</td>
+                            <td>Fully Compatible</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">M1</td>
+                            <td>Fully Compatible</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="option">
+
+                    <ul>
+                        <li>4.7-Inch (diagonal) widescreen LCD multi-touch display with IPS technology and Retina HD display</li>
+                        <li>Splash, water, and dust resistant</li>
+                        <li>12MP camera with Optical image stabilization and Six‑element lens</li>
+                        <li>4K video recording at 24 fps, 30 fps, or 60 fps</li>
+                        <li>All new glass design with A color‑matched, aerospace‑grade aluminum band</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div th:include=":: #buyCont"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    </body>
+</html>

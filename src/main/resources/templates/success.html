@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:include="layout/base :: headerFragment">
+    <title id="pageTitle">Success</title>
+</head>
+<body  th:include="layout/base :: bodyFragment">
+
+    <div id="pageContent">
+
+        <div class="successCont">
+
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4 text-center orderHead">
+                    Your order has been placed! :)
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+
+            <div class="row detRow">
+                <div class="col-md-6 text-right">
+                    Your order number is <span class="text-bold" th:text="${transactionId}"></span>
+
+                </div>
+
+                <div class="col-md-6 address">
+                    <div class="text-bold">Shipping Address</div>
+                    <div th:each="sa : ${shippingAddress}">
+                        <div th:text="${sa}"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

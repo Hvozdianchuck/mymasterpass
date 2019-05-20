@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+     >
+<head th:include="layout/base :: headerFragment">
+    <title id="pageTitle">Standard checkout</title>
+</head>
+<body  th:include="layout/checkout :: checkoutFragment">
+<div id="buyCont">
+    <div class="buyCont text-center">
+        <div class="text-bold">Buy With</div>
+
+        <img id="btnMasterpass" src="https://static.masterpass.com/dyn/img/btn/global/mp_chk_btn_147x034px.svg"/>
+    </div>
+
+    <script  th:inline="javascript" type="text/javascript">
+
+
+
+        function invokeLightBox(){
+
+            masterpass.checkout({
+                "checkoutId": [[${checkout_id}]],
+                "allowedCardTypes": ["master,amex,diners,discover,jcb,maestro,visa"],
+                "amount": "789.53",
+                "currency": "USD",
+                "shippingLocationProfile": "US,AU,BE",
+                "suppress3Ds": false,
+                "suppressShippingAddress": false,
+                "cartId": [[${cart_id}]],
+                "callbackUrl": [[${callback_url}]]
+            });
+
+        }
+
+        function initializeMasterpass(){
+
+            $("#btnMasterpass").on("click",invokeLightBox);
+
+
+        }
+
+
+        (function(){
+
+            initializeMasterpass();
+
+        })();
+
+    </script>
+</div>
+</body>
+</html>
