@@ -28,7 +28,7 @@ public class WebController   {
     @Value("${masterpass.merchant.callbackUrl}")
    private String callBackUrl;
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     ModelAndView home() {
 
         ModelAndView mv = new ModelAndView("home");
@@ -37,7 +37,7 @@ public class WebController   {
 
 
     @RequestMapping("/checkout")
-    String checkout(@RequestParam("mpstatus") String status, @RequestParam(value = "oauth_token", required = false) String oauthToken,
+    ModelAndView checkout(@RequestParam("mpstatus") String status, @RequestParam(value = "oauth_token", required = false) String oauthToken,
                           @RequestParam(value = "oauth_verifier", required = false) String oauthVerifier,
                           @RequestParam(value = "checkout_resource_url", required = false) String checkoutResourceUrl, HttpSession httpSession) {
 
@@ -46,7 +46,7 @@ public class WebController   {
             httpSession.setAttribute("oauth_verifier",oauthVerifier);
         }
 
-        return "redirect:/success";
+        return new ModelAndView("redirect:success");
     }
 
     @RequestMapping("/standardCheckout")
