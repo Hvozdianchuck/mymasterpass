@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.TestPaymant;
 import com.mastercard.merchant.checkout.PaymentDataApi;
 import com.mastercard.merchant.checkout.model.Address;
 import com.mastercard.merchant.checkout.model.PaymentData;
@@ -19,17 +20,18 @@ import java.util.UUID;
 
 
 
-@RestController
-public class WebController   {
+@Controller
+public class WebController extends BaseController  {
 
     @Value("${masterpass.merchant.checkoutId}")
    private String merchantCheckoutId;
 
     @Value("${masterpass.merchant.callbackUrl}")
    private String callBackUrl;
-
+private String cartId;
+    private String oauth_verifie;
     @RequestMapping("/home")
-    ModelAndView home() {
+  public   ModelAndView home() {
 
         ModelAndView mv = new ModelAndView("home");
         return mv;
@@ -37,12 +39,12 @@ public class WebController   {
 
 
     @RequestMapping("/checkout")
-    ModelAndView checkout(@RequestParam("mpstatus") String status, @RequestParam(value = "oauth_token", required = false) String oauthToken,
+  public   ModelAndView checkout(@RequestParam("mpstatus") String status, @RequestParam(value = "oauth_token", required = false) String oauthToken,
                           @RequestParam(value = "oauth_verifier", required = false) String oauthVerifier,
                           @RequestParam(value = "checkout_resource_url", required = false) String checkoutResourceUrl, HttpSession httpSession) {
 
         if(status.equals("success")){
-
+            oauth_verifie=oauthVerifier;
             httpSession.setAttribute("oauth_verifier",oauthVerifier);
         }
 
@@ -50,12 +52,13 @@ public class WebController   {
     }
 
     @RequestMapping("/standardCheckout")
-    ModelAndView standardCheckout(HttpSession httpSession) {
+ public    ModelAndView standardCheckout(HttpSession httpSession) {
 
         ModelAndView mv = new ModelAndView("standardCheckout");
 
 
-        String cartId = UUID.randomUUID().toString();
+          cartId = UUID.randomUUID().toString();
+        System.out.println(cartId);
 
         httpSession.setAttribute("cart_id",cartId);
 
@@ -67,20 +70,25 @@ public class WebController   {
         return mv;
 
 
+
     }
 
     @RequestMapping("/success")
-    ModelAndView success(HttpSession httpSession) {
+   public ModelAndView success(HttpSession httpSession) {
 
         ModelAndView mv = new ModelAndView("success");
         mv.addObject("transactionId",httpSession.getAttribute("oauth_verifier"));
 
-
+        System.out.println("null " );
+        System.out.println(cartId);
+        System.out.println("work " );
         QueryParams queryParams = new QueryParams()
                 .add("checkoutId", merchantCheckoutId)
-                .add("cartId", httpSession.getAttribute("cart_id").toString());
-
-        PaymentData paymentData = PaymentDataApi.show(httpSession.getAttribute("oauth_verifier").toString(), queryParams);
+                .add("cartId", cartId);
+        System.out.println(queryParams.toString());
+        System.out.println(httpSession.getAttribute("oauth_verifier").toString());
+        PaymentData paymentData = TestPaymant.showTest(httpSession.getAttribute("oauth_verifier").toString(), queryParams);
+//        PaymentData paymentData = PaymentDataApi.show(httpSession.getAttribute("oauth_verifier").toString(), queryParams);
         System.out.println("Card number is "+paymentData.getCard().getAccountNumber());
         Address shippingAdd = paymentData.getShippingAddress();
 

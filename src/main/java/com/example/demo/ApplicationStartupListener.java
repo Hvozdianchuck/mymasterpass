@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.util.Enumeration;
@@ -36,6 +38,8 @@ public class ApplicationStartupListener implements ApplicationListener<ContextRe
         MasterCardApiConfig.setSandBox (true);
         MasterCardApiConfig.setConsumerKey(consumerKey);
         MasterCardApiConfig.setPrivateKey (getPrivateKey());
+//        MasterCardApiConfig.setProxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 8080)));
+//        System.out.println(MasterCardApiConfig.getProxy().toString());
 
         System.out.println("Masterpass APIs Initialized");
     }
